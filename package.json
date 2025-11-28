@@ -8,12 +8,3 @@
     "serve": "^14.2.1"
   }
 }
-```
-
-## Your file structure should now be:
-```
-your-project/
-├── package.json  ← ADD THIS
-├── static.json
-└── equipsafety.com/
-    └── hoist-room12.html
