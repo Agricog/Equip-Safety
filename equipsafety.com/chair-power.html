@@ -65,7 +65,7 @@
             border: 1px solid #ddd;
             border-radius: 8px;
         }
-
+        
         /* Chatbot button */
         .chatbot-trigger {
             background: #667eea;
@@ -98,9 +98,7 @@
     </style>
 </head>
 <body>
-
-<div class="container">
-
+    <div class="container">
         <!-- Header -->
         <div class="header">
             <h1>🏥 Invacare TDX SP2 Power Chair</h1>
@@ -125,7 +123,8 @@
             <h2>📄 Operating Instructions</h2>
             <iframe 
                 class="doc-embed"
-                src="https://www.invacare.co.uk/sites/gb/files/csv_migration/product_docs/technical_docs/DTEC000031_1532486~N-TDX_SP2_Range_service_manual.pdf#toolbar=0&navpanes=0">
+                src="https://www.invacare.co.uk/sites/gb/files/csv_migration/product_docs/technical_docs/DTEC000031_1532486~N-TDX_SP2_Range_service_manual.pdf#toolbar=0&navpanes=0"
+                allowfullscreen>
             </iframe>
         </div>
 
@@ -148,24 +147,17 @@
                 src="https://app.smartsuite.com/form/sba974gi/lTrOXGnkxT?header=false">
             </iframe>
         </div>
+    </div>
 
-</div>
+    <!-- AUTOREPLYCHAT SCRIPT -->
+    <script defer src="https://chat.autoreplychat.com/embed.js" data-bot-id="cmiiybs4o002gpa1pe8hdrsvn"></script>
 
-    <!-- FastBots Chatbot Widget -->
     <script>
-        window.fasBotsConfig = {
-            chatbotId: "YOUR_FASTBOTS_ID",
-            domain: "https://fasapi.com"
-        };
-        
         function openChatbot() {
-            // FastBots provides this code - it opens the chat widget
-            if (window.FastBots) {
-                window.FastBots.open();
+            if (window.autoreplychat) {
+                window.autoreplychat.open();
             }
         }
     </script>
-    <script src="https://fasapi.com/embed.js" async></script>
-
 </body>
 </html>
