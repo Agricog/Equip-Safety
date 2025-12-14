@@ -66,13 +66,6 @@
             border-radius: 8px;
         }
 
-        /* Form embed */
-        .form-embed {
-            width: 100%;
-            min-height: 800px;
-            border: none;
-        }
-        
         /* Chatbot button */
         .chatbot-trigger {
             background: #667eea;
@@ -158,8 +151,15 @@
 
 </div>
 
+    <!-- FastBots Chatbot Widget -->
     <script>
+        window.fasBotsConfig = {
+            chatbotId: "YOUR_FASTBOTS_ID",
+            domain: "https://fasapi.com"
+        };
+        
         function openChatbot() {
+            // FastBots provides this code - it opens the chat widget
             if (window.FastBots) {
                 window.FastBots.open();
             }
