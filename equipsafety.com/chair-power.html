@@ -70,12 +70,13 @@
             border: 0;
         }
 
-        /* 3. INSTRUCTIONS (PDF/DOC) */
+        /* 3. INSTRUCTIONS (PDF/DOC) - SCROLLABLE */
         .doc-container {
             width: 100%;
-            height: 800px;
+            height: 600px;
             border: 1px solid #ddd;
             border-radius: 8px;
+            overflow: auto;
         }
 
         /* 4. CHATBOT INFO BOX */
@@ -97,6 +98,7 @@
         @media (max-width: 600px) {
             .header h1 { font-size: 22px; }
             .section { padding: 20px; }
+            .doc-container { height: 400px; }
         }
     </style>
 </head>
@@ -107,7 +109,7 @@
     <!-- 1. HEADER -->
     <div class="header">
         <h1>🏥 Invacare TDX SP2 Power Chair</h1>
-        <p>Trelawney,s Room</p>
+        <p>Trelawney's Room</p>
     </div>
 
     <!-- 2. VIDEO TUTORIAL -->
@@ -128,7 +130,7 @@
         <h2>📄 Operating Instructions</h2>
         <iframe 
             class="doc-container"
-            src="https://www.invacare.co.uk/sites/gb/files/csv_migration/product_docs/technical_docs/DTEC000031_1532486~N-TDX_SP2_Range_service_manual.pdf#toolbar=0&navpanes=0&scrollbar=0">
+            src="https://www.invacare.co.uk/sites/gb/files/csv_migration/product_docs/technical_docs/DTEC000031_1532486~N-TDX_SP2_Range_service_manual.pdf#toolbar=0&navpanes=0">
         </iframe>
         <p style="margin-top: 10px; font-size: 14px; color: #666;">
             <a href="https://www.invacare.co.uk/sites/gb/files/csv_migration/product_docs/technical_docs/DTEC000031_1532486~N-TDX_SP2_Range_service_manual.pdf" target="_blank" rel="noopener">
