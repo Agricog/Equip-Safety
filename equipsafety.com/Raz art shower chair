@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAZ ART Shower Chair | Safety Check</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 { font-size: 28px; margin-bottom: 5px; }
+        .header p { opacity: 0.9; font-size: 16px; }
+        
+        .section {
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        .section:last-child { border-bottom: none; }
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Video embed */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Doc embed */
+        .doc-embed {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        /* Chatbot button */
+        .chatbot-trigger {
+            background: #667eea;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background 0.3s;
+        }
+        .chatbot-trigger:hover { background: #5568d3; }
+        
+        /* Form embed */
+        .form-embed {
+            width: 100%;
+            min-height: 800px;
+            border: none;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 { font-size: 22px; }
+            .section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🚿 RAZ ART Shower Chair</h1>
+            <p>Trelawney's Home</p>
+        </div>
+
+        <!-- Video Tutorial -->
+        <div class="section">
+            <h2>🎥 Video Tutorial</h2>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/CVWHUuOPJyk" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Operating Instructions -->
+        <div class="section">
+            <h2>📄 Operating Instructions</h2>
+            <iframe 
+                class="doc-embed"
+                src="https://razdesigninc.com/wp-content/uploads/2025/03/RTD038ENr04-User-Dealer-Manual-ART-Z333.pdf">
+            </iframe>
+        </div>
+
+        <!-- AI Assistant -->
+        <div class="section">
+            <h2>💬 Need Help? Ask Our Multilingual Assistant</h2>
+            <p style="margin-bottom: 15px; color: #666;">
+                Get instant answers about operating this equipment in your language
+            </p>
+            <button class="chatbot-trigger" onclick="openChatbot()">
+                <span>🤖</span> Open AI Assistant
+            </button>
+        </div>
+
+        <!-- SmartSuite Form -->
+        <div class="section">
+            <h2>✅ Complete Training & Equipment Check</h2>
+            <iframe 
+                class="form-embed"
+                src="https://app.smartsuite.com/form/sba974gi/oRiNhRxfaT?header=false&prefill_equipment=RAZ-ART-SHOWER-CHAIR">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- FastBots Chatbot Widget -->
+    <script defer src="https://chat.autoreplychat.com/embed.js" data-bot-id="cmiiybs4o002gpa1pe8hdrsvn"></script>
+    <script>
+        function openChatbot() {
+            // Trigger the chatbot widget
+            if (window.AutoReplyChat) {
+                window.AutoReplyChat.open();
+            }
+        }
+    </script>
+</body>
+</html>
