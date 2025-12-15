@@ -59,11 +59,19 @@
         }
         
         /* Doc embed */
-        .doc-embed {
+        .doc-container {
             width: 100%;
             height: 500px;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
             border: 1px solid #ddd;
             border-radius: 8px;
+        }
+        .doc-embed {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            border: none;
         }
         
         /* Chatbot button */
@@ -94,6 +102,7 @@
         @media (max-width: 600px) {
             .header h1 { font-size: 22px; }
             .section { padding: 20px; }
+            .doc-container { height: 400px; }
         }
     </style>
 </head>
@@ -121,10 +130,12 @@
         <!-- Operating Instructions -->
         <div class="section">
             <h2>📄 Operating Instructions</h2>
-            <iframe 
-                class="doc-embed"
-                src="https://razdesigninc.com/wp-content/uploads/2025/03/RTD038ENr04-User-Dealer-Manual-ART-Z333.pdf">
-            </iframe>
+            <div class="doc-container">
+                <iframe 
+                    class="doc-embed"
+                    src="https://razdesigninc.com/wp-content/uploads/2025/03/RTD038ENr04-User-Dealer-Manual-ART-Z333.pdf">
+                </iframe>
+            </div>
             <a href="https://razdesigninc.com/wp-content/uploads/2025/03/RTD038ENr04-User-Dealer-Manual-ART-Z333.pdf" 
                download 
                target="_blank"
