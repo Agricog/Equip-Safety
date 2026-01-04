@@ -8,19 +8,13 @@
     <meta http-equiv="Expires" content="0">
     <title>FloorBed Demo | EquipSafety</title>
     <meta name="robots" content="noindex, nofollow">
-    
-    <!-- PDF.js from CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-    
     <style>
-        /* CORE VARIABLES */
         :root {
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --text-primary: #333333;
             --bg-page: #f5f5f5;
         }
 
-        /* RESET & BASE */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -29,7 +23,6 @@
             line-height: 1.5;
         }
 
-        /* LAYOUT CONTAINER */
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -38,7 +31,6 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
 
-        /* BACK BUTTON */
         .back-btn {
             position: fixed;
             top: 15px;
@@ -58,7 +50,6 @@
         }
         .back-btn:hover { background: #f0f0f0; }
 
-        /* 1. HEADER SECTION */
         .header {
             background: var(--primary-gradient);
             color: white;
@@ -68,7 +59,6 @@
         .header h1 { font-size: 28px; margin-bottom: 5px; }
         .header p { font-size: 16px; opacity: 0.9; }
 
-        /* DEMO BADGE */
         .demo-badge {
             display: inline-block;
             background: rgba(255,255,255,0.2);
@@ -80,7 +70,6 @@
             letter-spacing: 1px;
         }
 
-        /* SECTIONS COMMON */
         .section {
             padding: 30px;
             border-bottom: 1px solid #eee;
@@ -94,7 +83,6 @@
             gap: 8px;
         }
 
-        /* 2. VIDEO WRAPPER (16:9) */
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%;
@@ -110,115 +98,53 @@
             border: 0;
         }
 
-        /* 3. PDF VIEWER STYLES */
-        .pdf-container {
+        /* Native PDF embed */
+        .pdf-embed {
+            width: 100%;
+            height: 500px;
             border: 1px solid #ddd;
             border-radius: 8px;
-            overflow: hidden;
-            background: #525659;
-        }
-        
-        .pdf-toolbar {
-            background: #323639;
-            padding: 10px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .pdf-toolbar-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .pdf-toolbar button {
-            background: #525659;
-            border: none;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: background 0.2s;
-        }
-        
-        .pdf-toolbar button:hover {
-            background: #667eea;
-        }
-        
-        .pdf-toolbar button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .page-info {
-            color: white;
-            font-size: 14px;
-        }
-        
-        .pdf-canvas-container {
-            max-height: 600px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            gap: 10px;
-        }
-        
-        .pdf-canvas-container canvas {
-            max-width: 100%;
-            height: auto;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        
-        .pdf-loading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 20px;
-            color: white;
-        }
-        
-        .pdf-loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-top-color: #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 15px;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .pdf-error {
-            padding: 40px 20px;
-            text-align: center;
-            color: white;
-        }
-        
-        .pdf-error button {
-            margin-top: 15px;
-            background: #667eea;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
         }
 
-        /* 4. CHATBOT INFO BOX */
+        .pdf-fallback {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .pdf-fallback a {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+
+        .pdf-fallback a:hover {
+            background: #5568d3;
+        }
+
+        .download-note {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .download-note a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .download-note a:hover {
+            text-decoration: underline;
+        }
+
         .info-box {
             background: #f0f7ff;
             border-left: 4px solid #667eea;
@@ -226,64 +152,34 @@
             border-radius: 4px;
         }
 
-        /* 5. FORM CONTAINER */
         .form-container {
             width: 100%;
             min-height: 600px;
             border: 0;
         }
 
-        /* DOWNLOAD LINK */
-        .download-link {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .download-link a {
-            color: #667eea;
-            text-decoration: none;
-        }
-        
-        .download-link a:hover {
-            text-decoration: underline;
-        }
-
-        /* MOBILE RESPONSIVE */
         @media (max-width: 600px) {
             .header h1 { font-size: 22px; }
             .section { padding: 20px; }
             .back-btn { top: 10px; left: 10px; padding: 8px 12px; font-size: 14px; }
-            .pdf-toolbar { 
-                flex-direction: column; 
-                align-items: stretch;
-            }
-            .pdf-toolbar-left {
-                justify-content: center;
-            }
-            .pdf-canvas-container {
-                max-height: 400px;
-            }
+            .pdf-embed { height: 400px; }
         }
     </style>
 </head>
 <body>
 
-<!-- BACK BUTTON -->
 <a href="https://equipsafety.co.uk" class="back-btn">
     ← Back to Home
 </a>
 
 <div class="container">
 
-    <!-- 1. HEADER -->
     <div class="header">
         <h1>🏥 FloorBed</h1>
         <p>Demo Room</p>
         <span class="demo-badge">Demo Page</span>
     </div>
 
-    <!-- 2. VIDEO TUTORIAL -->
     <div class="section">
         <h2>🎥 Video Tutorial</h2>
         <div class="video-wrapper">
@@ -296,62 +192,28 @@
         </div>
     </div>
 
-    <!-- 3. OPERATING INSTRUCTIONS - PDF.js Viewer -->
     <div class="section">
         <h2>📄 Operating Instructions</h2>
-        <div class="pdf-container">
-            <div class="pdf-toolbar">
-                <div class="pdf-toolbar-left">
-                    <button id="prev-page" disabled>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                        Prev
-                    </button>
-                    <span class="page-info">
-                        Page <span id="page-num">-</span> of <span id="page-count">-</span>
-                    </span>
-                    <button id="next-page" disabled>
-                        Next
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-                </div>
-                <div>
-                    <button id="zoom-out">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="8" y1="11" x2="14" y2="11"></line>
-                        </svg>
-                    </button>
-                    <button id="zoom-in">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="11" y1="8" x2="11" y2="14"></line>
-                            <line x1="8" y1="11" x2="14" y2="11"></line>
-                        </svg>
-                    </button>
-                    <button id="download-pdf">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        Download
-                    </button>
-                </div>
-            </div>
-            <div id="pdf-viewer" class="pdf-canvas-container">
-                <div class="pdf-loading">
-                    <div class="pdf-loading-spinner"></div>
-                    <span>Loading document...</span>
-                </div>
-            </div>
+        
+        <!-- Native browser PDF embed -->
+        <iframe 
+            id="pdf-frame"
+            class="pdf-embed" 
+            src="/Floorbed2-User-Manual.pdf"
+            title="FloorBed User Manual">
+        </iframe>
+
+        <!-- Fallback for mobile/older browsers -->
+        <div id="pdf-fallback" class="pdf-fallback">
+            <p>📄 PDF viewer not available on this device</p>
+            <a href="/Floorbed2-User-Manual.pdf" target="_blank">Open PDF in New Tab</a>
         </div>
+
+        <p class="download-note">
+            <a href="/Floorbed2-User-Manual.pdf" download>⬇️ Download Manual (PDF)</a>
+        </p>
     </div>
 
-    <!-- 4. CHATBOT ASSISTANT -->
     <div class="section">
         <h2>💬 Need Help?</h2>
         <div class="info-box">
@@ -360,7 +222,6 @@
         </div>
     </div>
 
-    <!-- 5. SAFETY CHECK FORM -->
     <div class="section" style="border-bottom: none;">
         <h2>✅ Safety Check & Training Log</h2>
         <iframe 
@@ -372,196 +233,20 @@
 
 </div>
 
-<!-- FASTBOTS SCRIPT -->
 <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmiiybs4o002gpa1pe8hdrsvn"></script>
 
-<!-- PDF.js Initialization -->
 <script>
-(function() {
-    // PDF.js worker
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-    
-    // Configuration - PDF hosted on same domain = no CORS issues
-    const PDF_URL = '/Floorbed2-User-Manual.pdf';
-    
-    // State
-    let pdfDoc = null;
-    let currentPage = 1;
-    let scale = 1.2;
-    const minScale = 0.5;
-    const maxScale = 3;
-    
-    // Elements
-    const viewer = document.getElementById('pdf-viewer');
-    const pageNum = document.getElementById('page-num');
-    const pageCount = document.getElementById('page-count');
-    const prevBtn = document.getElementById('prev-page');
-    const nextBtn = document.getElementById('next-page');
-    const zoomInBtn = document.getElementById('zoom-in');
-    const zoomOutBtn = document.getElementById('zoom-out');
-    const downloadBtn = document.getElementById('download-pdf');
-    
-    // Render a single page
-    async function renderPage(num) {
-        const page = await pdfDoc.getPage(num);
-        
-        // Calculate scale based on container width
-        const containerWidth = viewer.clientWidth - 40; // Account for padding
-        const viewport = page.getViewport({ scale: 1 });
-        const autoScale = containerWidth / viewport.width;
-        const finalScale = Math.min(autoScale, scale);
-        
-        const scaledViewport = page.getViewport({ scale: finalScale });
-        
-        // Create canvas
-        const canvas = document.createElement('canvas');
-        canvas.className = 'pdf-page';
-        const context = canvas.getContext('2d');
-        canvas.height = scaledViewport.height;
-        canvas.width = scaledViewport.width;
-        
-        // Render PDF page
-        await page.render({
-            canvasContext: context,
-            viewport: scaledViewport
-        }).promise;
-        
-        return canvas;
-    }
-    
-    // Render all pages
-    async function renderAllPages() {
-        viewer.innerHTML = '';
-        
-        for (let i = 1; i <= pdfDoc.numPages; i++) {
-            const canvas = await renderPage(i);
-            viewer.appendChild(canvas);
-        }
-    }
-    
-    // Update UI state
-    function updateUI() {
-        pageNum.textContent = currentPage;
-        prevBtn.disabled = currentPage <= 1;
-        nextBtn.disabled = currentPage >= pdfDoc.numPages;
-        zoomOutBtn.disabled = scale <= minScale;
-        zoomInBtn.disabled = scale >= maxScale;
-    }
-    
-    // Show error
-    function showError(message) {
-        viewer.innerHTML = `
-            <div class="pdf-error">
-                <p>${message}</p>
-                <button onclick="location.reload()">Try Again</button>
-                <p style="margin-top: 15px; font-size: 13px; opacity: 0.7;">
-                    Or <a href="${PDF_URL}" target="_blank" style="color: #667eea;">download the PDF directly</a>
-                </p>
-            </div>
-        `;
-    }
-    
-    // Load PDF
-    async function loadPDF() {
-        try {
-            const loadingTask = pdfjsLib.getDocument(PDF_URL);
-            pdfDoc = await loadingTask.promise;
-            
-            // Update page count
-            pageCount.textContent = pdfDoc.numPages;
-            pageNum.textContent = 1;
-            
-            // Enable navigation
-            prevBtn.disabled = true;
-            nextBtn.disabled = pdfDoc.numPages <= 1;
-            zoomInBtn.disabled = false;
-            zoomOutBtn.disabled = false;
-            
-            // Render all pages
-            await renderAllPages();
-            
-        } catch (error) {
-            console.error('PDF load error:', error);
-            showError('Unable to load the document. Please try refreshing the page.');
-        }
-    }
-    
-    // Event listeners
-    prevBtn.addEventListener('click', () => {
-        if (currentPage > 1) {
-            currentPage--;
-            updateUI();
-            // Scroll to page
-            const pages = viewer.querySelectorAll('.pdf-page');
-            if (pages[currentPage - 1]) {
-                pages[currentPage - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
-    });
-    
-    nextBtn.addEventListener('click', () => {
-        if (currentPage < pdfDoc.numPages) {
-            currentPage++;
-            updateUI();
-            // Scroll to page
-            const pages = viewer.querySelectorAll('.pdf-page');
-            if (pages[currentPage - 1]) {
-                pages[currentPage - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
-    });
-    
-    zoomInBtn.addEventListener('click', async () => {
-        if (scale < maxScale) {
-            scale += 0.2;
-            await renderAllPages();
-            updateUI();
-        }
-    });
-    
-    zoomOutBtn.addEventListener('click', async () => {
-        if (scale > minScale) {
-            scale -= 0.2;
-            await renderAllPages();
-            updateUI();
-        }
-    });
-    
-    downloadBtn.addEventListener('click', () => {
-        const link = document.createElement('a');
-        link.href = PDF_URL;
-        link.download = 'Floorbed2-User-Manual.pdf';
-        link.click();
-    });
-    
-    // Track current page on scroll
-    viewer.addEventListener('scroll', () => {
-        const pages = viewer.querySelectorAll('.pdf-page');
-        const scrollTop = viewer.scrollTop;
-        const viewerHeight = viewer.clientHeight;
-        
-        for (let i = 0; i < pages.length; i++) {
-            const page = pages[i];
-            const pageTop = page.offsetTop - viewer.offsetTop;
-            const pageBottom = pageTop + page.clientHeight;
-            
-            if (pageTop <= scrollTop + viewerHeight / 2 && pageBottom >= scrollTop + viewerHeight / 2) {
-                if (currentPage !== i + 1) {
-                    currentPage = i + 1;
-                    updateUI();
-                }
-                break;
-            }
-        }
-    });
-    
-    // Load PDF on page ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loadPDF);
-    } else {
-        loadPDF();
-    }
-})();
+// Check if PDF loaded, show fallback if not (for mobile devices)
+document.getElementById('pdf-frame').onerror = function() {
+    document.getElementById('pdf-frame').style.display = 'none';
+    document.getElementById('pdf-fallback').style.display = 'block';
+};
+
+// Also check for iOS/Android which don't support PDF in iframe
+if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+    document.getElementById('pdf-frame').style.display = 'none';
+    document.getElementById('pdf-fallback').style.display = 'block';
+}
 </script>
 
 </body>
