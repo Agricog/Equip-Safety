@@ -381,9 +381,8 @@
     // PDF.js worker
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     
-    // Configuration
-    const PDF_URL = 'https://mobilityhire.com/wp-content/uploads/2018/07/Floorbed2-User-Manual.pdf';
-    const CORS_PROXY = 'https://corsproxy.io/?';
+    // Configuration - PDF hosted on same domain = no CORS issues
+    const PDF_URL = '/Floorbed2-User-Manual.pdf';
     
     // State
     let pdfDoc = null;
@@ -465,17 +464,8 @@
     // Load PDF
     async function loadPDF() {
         try {
-            // Try direct load first
-            let loadingTask = pdfjsLib.getDocument(PDF_URL);
-            
-            try {
-                pdfDoc = await loadingTask.promise;
-            } catch (e) {
-                // If CORS error, try with proxy
-                console.log('Direct load failed, trying CORS proxy...');
-                loadingTask = pdfjsLib.getDocument(CORS_PROXY + encodeURIComponent(PDF_URL));
-                pdfDoc = await loadingTask.promise;
-            }
+            const loadingTask = pdfjsLib.getDocument(PDF_URL);
+            pdfDoc = await loadingTask.promise;
             
             // Update page count
             pageCount.textContent = pdfDoc.numPages;
@@ -538,7 +528,10 @@
     });
     
     downloadBtn.addEventListener('click', () => {
-        window.open(PDF_URL, '_blank');
+        const link = document.createElement('a');
+        link.href = PDF_URL;
+        link.download = 'Floorbed2-User-Manual.pdf';
+        link.click();
     });
     
     // Track current page on scroll
